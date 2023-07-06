@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+    <link rel="stylesheet" href="{% static 'updatestyle.css' %}">
+</head>
+<body>
+<h1>UPDATE</h1>
+<form method="post">
+    {% csrf_token %}
+     {{f1.as_p}}
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

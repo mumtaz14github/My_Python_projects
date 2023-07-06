@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add_movie</title>
+    <link rel="stylesheet" href="{% static 'addstyle.css' %}">
+
+</head>
+<body style="background-image: url({% static 'backimg.jpg' %})">
+<h1 style="color:white;">Add Movie</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="enter movie name">
+    </div>
+    <div class="row">
+        <label>Year</label>
+        <input type="text" name="year" autocomplete="off" placeholder="enter year">
+    </div>
+    <div class="row">
+        <label>Description</label>
+        <input type="text" name="desc" autocomplete="off" placeholder="enter description">
+    </div>
+    <div class="row">
+        <input type="file" name="image">
+    </div>
+
+    <input type="submit" value="ADD">
+
+</form>
+</body>
+</html>

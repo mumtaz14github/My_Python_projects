@@ -1,0 +1,66 @@
+{% extends 'style.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+             <img src="https://www.laptoppcapk.com/wp-content/uploads/2017/06/da0ee0dfa8e15ed8dd10a1b592c8ae8b.png" style="width:5%; margin-left:5px; margin-top:5px;">
+                <div class="banner-text" style=" margin-left:39%;">
+                    <h1>ToDoApp</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <form method="POST" class="p-3" style="box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)">
+         {% csrf_token %}
+         <div class="form-group">
+           <input type="text" class="form-control" name="name" placeholder="enter name">
+    </div>
+    <div class="form-group">
+             <input type="text" class="form-control" name="priority" placeholder="enter priority">
+    </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="date" placeholder="enter date">
+            </div>
+  <input type="submit" class="btn btn-success">
+
+</form>
+            <br>
+            <div class="image">
+                <img src="https://st2.depositphotos.com/3643473/6205/i/600/depositphotos_62059053-stock-photo-3d-man-with-clipboard-and.jpg">
+            </div>
+
+
+
+
+
+
+    </div>
+        <div class="col-md-6">
+            <h3>Task to be completed</h3>
+            {% for i in detail %}
+            <div class="card" style="box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)">
+                <div class="card-body">
+
+                    <img src="https://i.pinimg.com/564x/36/b5/2d/36b52dd7eb426e69cafa186e0ff882c3.jpg" style="width:10%">
+                        <h5 class="card-title"> {{i.name}}</h5>
+                    <p class="card-text">{{i.priority}}</p>
+                    <p class="card-text">{{i.date}}</p>
+
+                    <a href="{% url 'todoapp:delete' i.id %}" class="btn btn-danger">Done</a>
+                    <a href="{% url 'todoapp:update' i.id %}" class="btn btn-primary">Update</a>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+
+        </div>
+</div>
+</div>
+{% endblock %}
